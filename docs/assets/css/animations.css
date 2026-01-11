@@ -1,0 +1,697 @@
+/* MediaBay Animations & Transitions */
+
+/* Scroll-triggered animations */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease-out;
+}
+
+.animate-on-scroll.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Service cards entrance animations */
+.service-card {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: serviceCardEntrance 0.6s ease-out forwards;
+}
+
+.service-card:nth-child(1) { animation-delay: 0.1s; }
+.service-card:nth-child(2) { animation-delay: 0.2s; }
+.service-card:nth-child(3) { animation-delay: 0.3s; }
+.service-card:nth-child(4) { animation-delay: 0.4s; }
+.service-card:nth-child(5) { animation-delay: 0.5s; }
+.service-card:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes serviceCardEntrance {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Word animation effects for hero section */
+.word-animate {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+}
+
+.word-animate::before {
+    content: attr(data-word);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--accent-color), #ff9a7b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    transform: translateY(100%);
+    transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.word-animate:hover::before {
+    transform: translateY(0);
+}
+
+/* Parallax scroll effects */
+.parallax-element {
+    transform: translateY(0);
+    transition: transform 0.1s linear;
+}
+
+/* Timeline animations */
+.timeline-item {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.8s ease-out;
+}
+
+.timeline-item:nth-child(even) {
+    transform: translateX(50px);
+}
+
+.timeline-item.animate {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.timeline-item:nth-child(1) { transition-delay: 0.1s; }
+.timeline-item:nth-child(2) { transition-delay: 0.2s; }
+.timeline-item:nth-child(3) { transition-delay: 0.3s; }
+.timeline-item:nth-child(4) { transition-delay: 0.4s; }
+
+/* Stats counter animation */
+.stat-number {
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.stat-number.animate {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Template cards hover effects */
+.template-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.template-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(232, 122, 100, 0.1), transparent);
+    transition: left 0.6s ease-in-out;
+    z-index: 1;
+}
+
+.template-card:hover::before {
+    left: 100%;
+}
+
+/* Testimonial slider animations */
+.testimonial-slide {
+    opacity: 0;
+    transform: translateX(100px);
+    transition: all 0.5s ease-in-out;
+}
+
+.testimonial-slide.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.testimonial-slide.prev {
+    transform: translateX(-100px);
+}
+
+/* Form field focus animations */
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+    position: relative;
+    transition: all 0.3s ease-in-out;
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(232, 122, 100, 0.15);
+}
+
+/* Button hover animations */
+.btn-primary,
+.btn-secondary {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary::before,
+.btn-secondary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease-in-out;
+}
+
+.btn-primary:hover::before,
+.btn-secondary:hover::before {
+    left: 100%;
+}
+
+/* Loading button animation */
+.submit-btn.loading {
+    pointer-events: none;
+    position: relative;
+}
+
+.submit-btn.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid transparent;
+    border-top: 2px solid currentColor;
+    border-radius: 50%;
+    animation: buttonSpin 1s linear infinite;
+}
+
+@keyframes buttonSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Chatbot animations */
+.chatbot-interface {
+    transform: translateY(20px) scale(0.9);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.chatbot-interface.open {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+.message {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: messageSlideIn 0.3s ease-out forwards;
+}
+
+.message:nth-child(odd) { animation-delay: 0.1s; }
+.message:nth-child(even) { animation-delay: 0.2s; }
+
+@keyframes messageSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Quick actions animation */
+.quick-actions {
+    opacity: 0;
+    animation: quickActionsSlide 0.5s ease-out 0.3s forwards;
+}
+
+@keyframes quickActionsSlide {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Navigation link hover effects */
+.nav-links a {
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-links a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(232, 122, 100, 0.1), transparent);
+    transition: left 0.4s ease-in-out;
+}
+
+.nav-links a:hover::before {
+    left: 100%;
+}
+
+/* Social links hover animations */
+.social-links a {
+    position: relative;
+    overflow: hidden;
+}
+
+.social-links a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--accent-color);
+    transform: scale(0);
+    transition: transform 0.3s ease-in-out;
+    border-radius: inherit;
+}
+
+.social-links a:hover::before {
+    transform: scale(1);
+}
+
+.social-links a i {
+    position: relative;
+    z-index: 1;
+}
+
+/* Filter button animations */
+.filter-btn,
+.industry-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.filter-btn::before,
+.industry-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--primary-color);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease-in-out;
+    z-index: -1;
+}
+
+.filter-btn:hover::before,
+.filter-btn.active::before,
+.industry-btn:hover::before,
+.industry-btn.active::before {
+    transform: scaleX(1);
+}
+
+/* Price calculator animations */
+.price-display {
+    transform: translateY(20px);
+    opacity: 0;
+    animation: priceDisplaySlide 0.6s ease-out 0.3s forwards;
+}
+
+@keyframes priceDisplaySlide {
+    0% {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.price-item,
+.price-total {
+    opacity: 0;
+    transform: translateX(-20px);
+    animation: priceItemSlide 0.4s ease-out forwards;
+}
+
+.price-item:nth-child(1) { animation-delay: 0.1s; }
+.price-item:nth-child(2) { animation-delay: 0.2s; }
+.price-total { animation-delay: 0.3s; }
+
+@keyframes priceItemSlide {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Scroll indicator animation */
+.scroll-indicator {
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-in-out;
+}
+
+.scroll-indicator.visible {
+    transform: translateY(0);
+}
+
+/* Menu toggle animation states */
+.menu-toggle {
+    transform: scale(1);
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.menu-toggle:active {
+    transform: scale(0.95);
+}
+
+.menu-toggle.active {
+    background: var(--accent-color);
+}
+
+.menu-toggle.active span {
+    background: var(--white);
+}
+
+/* Side panel overlay */
+.panel-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1400;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+.panel-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Floating elements animation */
+.floating-elements .element {
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+.element-1 {
+    animation-name: float1;
+    animation-duration: 6s;
+}
+
+.element-2 {
+    animation-name: float2;
+    animation-duration: 8s;
+}
+
+.element-3 {
+    animation-name: float3;
+    animation-duration: 7s;
+}
+
+@keyframes float1 {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    100% {
+        transform: translateY(-30px) rotate(10deg);
+    }
+}
+
+@keyframes float2 {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    100% {
+        transform: translateY(-25px) rotate(-8deg);
+    }
+}
+
+@keyframes float3 {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    100% {
+        transform: translateY(-35px) rotate(12deg);
+    }
+}
+
+/* Newsletter form animation */
+.newsletter-form {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: newsletterSlide 0.6s ease-out 0.5s forwards;
+}
+
+@keyframes newsletterSlide {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Success/Error message animations */
+.form-message {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease-in-out;
+}
+
+.form-message.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.form-message.success {
+    background: var(--success);
+    color: white;
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.form-message.error {
+    background: var(--danger);
+    color: white;
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-md);
+}
+
+/* Typing indicator for chatbot */
+.typing-indicator {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: var(--spacing-md);
+    background: var(--light-gray);
+    border-radius: var(--radius-lg);
+    align-self: flex-start;
+    max-width: 80px;
+}
+
+.typing-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--medium-gray);
+    border-radius: 50%;
+    animation: typingBounce 1.4s infinite ease-in-out;
+}
+
+.typing-dot:nth-child(1) { animation-delay: -0.32s; }
+.typing-dot:nth-child(2) { animation-delay: -0.16s; }
+.typing-dot:nth-child(3) { animation-delay: 0s; }
+
+@keyframes typingBounce {
+    0%, 80%, 100% {
+        transform: scale(0.8);
+        opacity: 0.5;
+    }
+    40% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Smooth scrolling enhancements */
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    * {
+        scroll-behavior: smooth;
+    }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    .loading-screen {
+        animation: none;
+    }
+    
+    .word-animate {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+    
+    .floating-elements .element {
+        animation: none;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    :root {
+        --primary-color: #000000;
+        --accent-color: #ff6600;
+        --medium-gray: #666666;
+        --light-gray: #f0f0f0;
+    }
+    
+    .btn-primary,
+    .btn-secondary {
+        border-width: 3px;
+    }
+    
+    .service-card,
+    .template-card,
+    .contact-item {
+        border: 2px solid var(--primary-color);
+    }
+}
+
+/* Focus visible enhancements */
+*:focus-visible {
+    outline: 3px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+/* Custom scrollbar animations */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--light-gray);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--medium-gray);
+    border-radius: var(--radius-full);
+    transition: background-color 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-color);
+}
+
+/* Page transition effects */
+.page-transition {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease-out;
+}
+
+.page-transition.loaded {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Intersection Observer animations */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.fade-in-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-in-left {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: all 0.8s ease-out;
+}
+
+.fade-in-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.fade-in-right {
+    opacity: 0;
+    transform: translateX(30px);
+    transition: all 0.8s ease-out;
+}
+
+.fade-in-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.scale-in {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.scale-in.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Stagger animation delays */
+.stagger-1 { transition-delay: 0.1s; }
+.stagger-2 { transition-delay: 0.2s; }
+.stagger-3 { transition-delay: 0.3s; }
+.stagger-4 { transition-delay: 0.4s; }
+.stagger-5 { transition-delay: 0.5s; }
+.stagger-6 { transition-delay: 0.6s; }
